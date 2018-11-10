@@ -32,7 +32,7 @@ requirements:
     - {{ compiler('c') }}
     - pkg-config
     - cmake
-host:
+  host:
     - ragel >=6.6
     - glib
     - bzip2
