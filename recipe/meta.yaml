@@ -29,24 +29,24 @@ build:
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('c') }}
     - pkg-config
-    - cmake 3.*
+    - cmake
+host:
     - ragel >=6.6
-    - glib 2.51.*
-    - bzip2 1.0.*
-    - xz 5.2.*
+    - glib
+    - bzip2
+    - xz
     - lzo  # [linux]
     - snappy
-    - zlib 1.2.*
-
+    - zlib
   run:
-    - glib 2.51.*
-    - bzip2 1.0.*
-    - xz 5.2.*
+    - glib
+    - bzip2
+    - xz
     - lzo  # [linux]
     - snappy
-    - zlib 1.2.*
+    - zlib
 
 test:
   requires:
