@@ -1,7 +1,6 @@
 {% set name = "squash" %}
 {% set version = "0.7.0" %}
 {% set version_major = "0.7" %}
-{% set hash_type = "sha256" %}
 {% set hash_val = "4e741b1ab9dff9433fe9dd7393c7db41173b49b0426dcfcd03b13d0b03bc19b8" %}
 
 package:
@@ -11,7 +10,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.bz2
   url: https://github.com/quixdb/squash/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.bz2
-  {{ hash_type }}: {{ hash_val }}
+  sha256: {{ hash_val }}
   patches:
     - patches/0001-Remove-wrongly-placed-break-on-cmake-file.patch
     - patches/0002-Add-directive-to-have-_SC_PAGE_SIZE-defined.patch
@@ -24,7 +23,7 @@ source:
     - patches/0009-Skip-OSX-only-failing-tests-for-now.patch
 
 build:
-  number: 1000
+  number: 1001
   skip: True  # [win]
 
 requirements:
@@ -42,7 +41,6 @@ requirements:
     - snappy
     - zlib
   run:
-    - glib
     - bzip2
     - xz
     - lzo  # [linux]
