@@ -41,7 +41,6 @@ requirements:
     - snappy
     - zlib
   run:
-    - glib
     - bzip2
     - xz
     - lzo  # [linux]
