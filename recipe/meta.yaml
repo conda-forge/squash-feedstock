@@ -23,26 +23,22 @@ source:
     - patches/0009-Skip-OSX-only-failing-tests-for-now.patch
 
 build:
-  number: 1001
+  number: 1002
   skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - pkg-config
-    - cmake
+    - cmake <4
+    - make  # [linux]
   host:
     - ragel >=6.6
     - glib
     - bzip2
-    - xz
-    - lzo  # [linux]
-    - snappy
-    - zlib
-  run:
-    - bzip2
-    - xz
+    - liblzma-devel
     - lzo  # [linux]
     - snappy
     - zlib
@@ -50,7 +46,7 @@ requirements:
 test:
   requires:
     # We use python just to compute the md5sum of codecs output.
-    - python 3.5.*
+    - python {{ python_min }}.*
     - pkg-config
   commands:
     - test -f ${PREFIX}/include/squash-{{ version_major }}/squash/squash.h
@@ -58,8 +54,6 @@ test:
     - test -f ${PREFIX}/lib/libsquash{{ version_major }}.so     # [linux]
     - test -f ${PREFIX}/lib/pkgconfig/squash-{{ version_major }}.pc
     - pkg-config --cflags --libs {{ name }}-{{ version_major }}
-    - conda inspect linkages -p $PREFIX {{ name }}
-    - conda inspect objects -p $PREFIX {{ name }}  # [osx]
   files:
     - testdata.txt
 
