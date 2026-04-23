@@ -5,32 +5,29 @@ bzip2:
 c_compiler:
 - clang
 c_compiler_version:
-- '10'
+- '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.9'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '10'
+- '16'
 glib:
-- 2.64.6
+- '2'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-pin_run_as_build:
-  bzip2:
-    max_pin: x
-  xz:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
 snappy:
-- '1'
+- '1.2'
 target_platform:
 - osx-64
 xz:
-- '5.2'
+- '5'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
